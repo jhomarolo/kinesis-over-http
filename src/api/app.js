@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const Swagger = require('./swagger')
 const logRoute = require('./routes/logRoute')
+const healthRoute = require('./routes/healthRoute')
 
 class App {
   constructor() {
@@ -20,7 +21,7 @@ class App {
   router() {
     const swagger = new Swagger()
     this.server.use(swagger.GetSwaggerRoutes())
-    this.server.use(logRoute)
+    this.server.use(logRoute,healthRoute)
   }
 }
 
